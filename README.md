@@ -448,7 +448,7 @@ const styles = StyleSheet.create({
 [App04](https://github.com/melissaromao/react-native-pratice/tree/main/app04): Aplicação 3 em 1 que utiliza componentes **FlatList**, **SectionList** para renderizar listas no React Native.
 
 - **FlatList:** Usado para renderizar lista simples e linear de itens, semelhante a tag **ul** ou **ol** do HTML.
-- **SectionList:** Extensão do FlatList usado para renderizar listas com seções agrupadas, similar a combinação de **<ul>** e **<h2>** para criar listas categorizadas.
+- **SectionList:** Extensão do FlatList usado para renderizar listas com seções agrupadas, similar a combinação de **ul** e **h2** para criar listas categorizadas.
 
 > **Modularidade, Flexibilidade e Performance:** Cada **View** utilizada tem uma responsabilidade clara, o layout se adapta bem a diferentes tamanhos de tela e o uso de **flatlist** garante que apenas os itens visíveis sejam renderizados.
 
@@ -968,4 +968,177 @@ const styles = StyleSheet.create({
 <img width="809" height="994" alt="image" src="https://github.com/user-attachments/assets/5e0cf275-53e0-49c7-b436-3c3399dc2594" />
 <img width="804" height="992" alt="image" src="https://github.com/user-attachments/assets/7a1941e1-cebc-4cf5-9860-668b2221fd05" />
 <img width="798" height="1003" alt="image" src="https://github.com/user-attachments/assets/f7d39d3f-0e20-429a-9530-23db6bbd36f8" />
+</details>
+
+<details>
+<summary>App 05</summary>
+
+[App05](https://github.com/melissaromao/react-native-pratice/tree/main/app05): Aplicação simples de pizzaria trabalhando com **DropDownPicker**, **CheckBox**, **RadioButton e RadioGroup**, **React Native Elements** e **React Native Papers**.
+
+- **React Native Elements:** É uma biblioteca de componentes UI (User Interface) pronta para uso, facilita o desenvolvimento de aplicativos com estilos consistentes e configuráveis, fornecendo componentes de interface reutilizáveis como **botões, caixas de entrada, sliders, ícones** e entre outros, para utilizar basta usar o comando de  instalação `npm install react-native-elements`.
+- - **CheckBox:** Uma caixa de seleção é um elemento de interface gráfica com mais de duas opções de estados, podemos marcar e desmarcar elas.
+- **Picker:** Componente que fornece uma interface para que os usuários possam selecionar um item de uma lista suspensa (dropdown).
+- **DropDownPicker:** Biblioteca de código aberto que fornece o componente dropdown altamente customizável, utilizado como altenativa do **Picker**  que foi descontinuado.
+- **RadioButton e RadioGroup:** Um botão que permite que o usuário selecione uma única opção entre várias disponíveis e um grupo de **radiobuttons** que gerencia a seleção de uma única opção.
+- **React Native Paper:** Biblioteca de componentes que segue as diretrizer do **Material Design**, permite criar interfaces modernas e responsivas com facilidade, para utlizar basta instalar com o comando `npm install react-native-paper`.
+
+### Estrutura de Pastas
+<img width="228" height="331" alt="image" src="https://github.com/user-attachments/assets/adee4416-a42b-47bd-a931-c00beea3fb67" />
+
+### App.js
+```javascript
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
+import { CheckBox, Button } from 'react-native-elements';
+import { RadioButton } from 'react-native-paper';
+import DropDownPicker from 'react-native-dropdown-picker';
+
+const PIZZAS = [
+  { label: 'Calabresa - R$ 35,00', value: 35 },
+  { label: 'Frango com Catupiry - R$ 40,00', value: 40 },
+  { label: 'Quatro Queijos - R$ 45,00', value: 45 },
+  { label: 'Portuguesa - R$ 38,00', value: 38 },
+  { label: 'Margherita - R$ 42,00', value: 42 },
+];
+
+const BEBIDAS = [
+  { label: 'Refrigerante - R$ 7,00', preco: 7 },
+  { label: 'Suco - R$ 9,00', preco: 9 },
+  { label: 'Água - R$ 4,00', preco: 4 },
+];
+
+export default function App() {
+  const [open, setOpen] = useState(false);
+  const [pizzaSelecionada, setPizzaSelecionada] = useState(null);
+  const [itens, setItens] = useState(PIZZAS);
+
+  const [bebidas, setBebidas] = useState([false, false, false]);
+
+  const [borda, setBorda] = useState('sem');
+
+  const [total, setTotal] = useState('');
+
+  const toggleBebida = (index) => {
+    const novas = [...bebidas];
+    novas[index] = !novas[index];
+    setBebidas(novas);
+  };
+
+  const calcular = () => {
+    if (!pizzaSelecionada) {
+      Alert.alert('Atenção', 'Selecione o sabor da pizza!');
+      return;
+    }
+
+    let valorTotal = pizzaSelecionada;
+
+    BEBIDAS.forEach((b, i) => {
+      if (bebidas[i]) valorTotal += b.preco;
+    });
+
+    if (borda === 'com') valorTotal += 8;
+
+    setTotal(`Total do pedido: R$ ${valorTotal.toFixed(2)}`);
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.titulo}>🍕 Pizzaria Sabour</Text>
+
+      <Text style={styles.label}>Sabour da Pizza</Text>
+      <DropDownPicker
+        open={open}
+        value={pizzaSelecionada}
+        items={itens}
+        setOpen={setOpen}
+        setValue={setPizzaSelecionada}
+        setItems={setItens}
+        placeholder="Escolha o sabor"
+        containerStyle={{ marginBottom: 20 }}
+        zIndex={1000}
+      />
+
+      <Text style={styles.label}>Bebidas:</Text>
+      {BEBIDAS.map((b, i) => (
+        <CheckBox
+          title={b.label}
+          checked={bebidas[i]}
+          onPress={() => toggleBebida(i)}
+          iconType="material-community"
+          checkedIcon="checkbox-marked"
+          uncheckedIcon="checkbox-blank-outline"
+          checkedColor="#c62828"
+        />
+        ))}
+
+      <Text style={[styles.label, { marginTop: 16 }]}>Borda recheada?</Text>
+      <RadioButton.Group onValueChange={(v) => setBorda(v)} value={borda}>
+        <View style={styles.radio}>
+          <RadioButton value="com" />
+          <Text>Com borda recheada - R$ 8,00</Text>
+        </View>
+        <View style={styles.radio}>
+          <RadioButton value="sem" />
+          <Text>Sem borda recheada</Text>
+        </View>
+      </RadioButton.Group>
+
+      <Button
+        title="Calcular Total"
+        onPress={calcular}
+        containerStyle={styles.botaoContainer}
+        buttonStyle={styles.botao}
+      />
+
+      {total !== '' && (
+        <Text style={styles.resultado}>{total}</Text>
+      )}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: '#f5f5f5',
+    flexGrow: 1,
+  },
+  titulo: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 24,
+    color: '#c62828',
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#333',
+  },
+  radio: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  botaoContainer: {
+    marginTop: 24,
+    borderRadius: 6,
+  },
+  botao: {
+    backgroundColor: '#c62828',
+    padding: 12,
+  },
+  resultado: {
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#2e7d32',
+  },
+});
+```
+### Saída
+<img width="802" height="996" alt="image" src="https://github.com/user-attachments/assets/ff9ca5c7-2c4e-4aab-b7e2-7a9b2ddcb3fb" />
+<img width="801" height="1000" alt="image" src="https://github.com/user-attachments/assets/c6837779-f010-4381-9c3a-9843e11f1f62" />
 </details>
