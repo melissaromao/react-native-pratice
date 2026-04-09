@@ -230,20 +230,21 @@ const styles = StyleSheet.create({
 <img width="835" height="997" alt="image" src="https://github.com/user-attachments/assets/0cd022fe-f960-4452-a4b5-b5b4d7068f71" />
 
 </details>
+
+<details>
 <summary>App 02</summary>
 
-Aplicação simples trabalhando com componente *Image* para uso de imagens externas, *componentes*, *props* e *Hooks*.
-- *Props:* São propriedades estáticas onde podemos passar ou utilizar informações, não podendo alterá-la ao receber um valor externo.
+[App02](https://github.com/melissaromao/react-native-pratice/tree/main/app02): Aplicação simples trabalhando com componente **Image** para uso de imagens externas, **componentes**, **props** e **Hooks**.
+- **Props:** São propriedades estáticas onde podemos passar ou utilizar informações, não podendo alterá-la ao receber um valor externo.
 
-> *Hooks:* São funções do React que permitem *conectar ao estado e ao ciclo da vida da aplicação*, criados especificamente para *componentes funcionais*. Resolvem problemas como a reutilização de código entre os componentes e  deixa a aplicação mais rápida e com código legível, além de melhorar a verbosidade (ações) do programa.
-- *Estados:* Variáveis que armazenam e alteram informações sobre um componente.
-- *Ciclo de Vida:* Funções executadas em momentos diferentes com ações diferentes.
+> **Hooks:** São funções do React que permitem **conectar ao estado e ao ciclo da vida da aplicação**, criados especificamente para **componentes funcionais**. Resolvem problemas como a reutilização de código entre os componentes e  deixa a aplicação mais rápida e com código legível, além de melhorar a verbosidade (ações) do programa.
+- **Estados:** Variáveis que armazenam e alteram informações sobre um componente.
+- **Ciclo de Vida:** Funções executadas em momentos diferentes com ações diferentes.
 
-> *Componentes do Hooks:* *Use State* - Permite usar componentes e manipular variáveis mesmo dentro de funções; *Use Effect* - Permite substituir todo o ciclo de vida, sem precisar de uma classe para chamar, montar ou desmontar um componente;  *Use Memo* - Usado para memorizar valores calculados entre renderizações consecutivas do componente; *Use Ref* - Usado para criar uma referência mutável que pode ser associada a elementos do DOM ou a outros valores que precisam ser mantidos em renderizações consecutivas de um componente.
+> **Componentes do Hooks:** **Use State** - Permite usar componentes e manipular variáveis mesmo dentro de funções; **Use Effect** - Permite substituir todo o ciclo de vida, sem precisar de uma classe para chamar, montar ou desmontar um componente;  **Use Memo** - Usado para memorizar valores calculados entre renderizações consecutivas do componente; **Use Ref** - Usado para criar uma referência mutável que pode ser associada a elementos do DOM ou a outros valores que precisam ser mantidos em renderizações consecutivas de um componente.
 
 ### Estrutura de Pastas
-
-### Saída
+<img width="221" height="394" alt="image" src="https://github.com/user-attachments/assets/da929630-c352-4e87-99e6-83aaf062f1f9" />
 
 ### App.js
 ```javascript
@@ -327,4 +328,8 @@ export default function Jobs(props) {
     );
 }
 ```
+
+### Saída
+<img width="808" height="985" alt="image" src="https://github.com/user-attachments/assets/824644b6-d30e-403e-9ebd-f55eaaea9fe0" />
+<img width="804" height="977" alt="image" src="https://github.com/user-attachments/assets/46bb117b-a09e-4361-b45f-67455902d832" />
 </details>
