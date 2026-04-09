@@ -53,7 +53,7 @@
 
 <summary>App 01</summary>
 
-Aplicação simples que utiliza componentes **View**, **Text** e **StyleSheet**
+[App01](https://github.com/melissaromao/react-native-pratice/tree/main/app01): Aplicação simples que utiliza componentes **View**, **Text** e **StyleSheet**.
 ### Estrutura de Pastas
 <img width="234" height="362" alt="image" src="https://github.com/user-attachments/assets/c5fd305e-3bf1-4a93-9741-6ed8c2c8f4e1" />
 
