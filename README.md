@@ -1142,3 +1142,116 @@ const styles = StyleSheet.create({
 <img width="802" height="996" alt="image" src="https://github.com/user-attachments/assets/ff9ca5c7-2c4e-4aab-b7e2-7a9b2ddcb3fb" />
 <img width="801" height="1000" alt="image" src="https://github.com/user-attachments/assets/c6837779-f010-4381-9c3a-9843e11f1f62" />
 </details>
+
+<details>
+
+ <summary>App08 • Extra</summary>
+Prática extra de **programação de dispositivos móveis**, utilizando **Vue** para criação de aplicação web. O aplicativo se consiste em um simples sistema de cálculo da **velocidade média**.
+
+ ### Vue
+ O **Vue** é um **framework** progressivo de **JavaScript** utilizado para **construção de interfaces de usuário (UI)** e aplicações web modernas, especialmente do tipo **SPA (Single Page Application)**. Seu principal objetivo é facilitar o desenvolvimento de **interfaces reativas, organizadas e de fácil manutenção**.
+
+### Estrutura Básica
+- **Template:** Parte visual (HTML)
+- **Script:** Lógica da aplicação (JavaScript)
+- **Style:** Estilização (CSS)
+
+> **Reatividade:** Uma das maiores vantagens do Vue é o sistema reativo, quando um dado muda a tela atualiza automaticamente.
+
+### Estrutura de Componentes
+No vue, a aplicação é dividida em componentes reutilizáveis, isso facilita a organização do código, manutenção do sistema e reutilização de telas. Por exemplo:
+- **Header.vue**
+- **Calculadora.vue**
+- **Footer.vue**
+- **Formulario.vue*      
+
+### Diretivas
+O vue utiliza diretivas/comandos especiais dentro do HTML.
+<img width="484" height="162" alt="image" src="https://github.com/user-attachments/assets/b01c7e97-3309-456f-8f4c-5f95db788b62" />
+
+### Comparativo
+<img width="644" height="112" alt="image" src="https://github.com/user-attachments/assets/687744fd-afb5-45df-8ff6-41330907392c" />
+
+> Para criar um projeto com Vue, usamos o comando `npm create vite@latest nomedoprojeto`
+
+### Estrutura de Pastas
+<img width="199" height="351" alt="image" src="https://github.com/user-attachments/assets/e8054d61-ab4e-4de3-8023-5c0bf4c02afa" />
+
+### App.vue
+```javascript
+<template>
+  <div class="container">
+    <h1>Velocidade Média</h1>
+
+    <div class="formulario">
+      <label>Digite o valor da distância:</label>
+      <input type="number" v-model="distancia" />
+
+      <label>Digite o valor do tempo</label>
+      <input type="number" v-model="tempo" />
+
+      <button @click="calcularVelocidadeMedia">Calcular Soma</button>
+
+      <div class="resultado">
+        <h2>Resultado: {{ velocidade_media }}</h2>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const distancia = ref < number > (0);
+const tempo = ref < number > (0);
+const velocidade_media = ref<number>(0);
+
+function calcularVelocidadeMedia(): void {
+  velocidade_media.value = distancia.value / tempo.value;
+}
+</script>
+
+<style>
+.container {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  gap: 10px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  background-color: #42b883;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #2f8f6f;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-weight: bold;
+}
+</style>
+```
+
+### Saída
+<img width="1599" height="848" alt="image" src="https://github.com/user-attachments/assets/b6939bb6-28ef-4944-80ec-ce159a50921f" />
+
+</details>
